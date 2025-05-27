@@ -77,6 +77,9 @@ a{
 }
 body{
     background-color:azure;
+    height: 850px;
+    border: 0px solid gray;
+    background-image: linear-gradient(rgb(0, 113, 128),rgb(0, 255, 153),rgb(255, 255, 255));
 }
 #ribion6,#loginicon{
     display: inline-block;

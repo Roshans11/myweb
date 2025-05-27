@@ -9,15 +9,26 @@
     height: 350px;
     width: 400px;
     position:absolute;
-    top: 50%;
+    top: 60%;
     left:50%;
-    transform: translate(-50%, -50%); /* Center the box */
+    transform: translate(-60%, -50%); /* Center the box */
 }
+.heading {
+    font-size: 2rem; 
+    font-weight: 300;
+    color: #190825;
+    text-align: center;
+    margin-top: 100px;
+    position: relative;
+}
+    
 
 
 
 body{
-    background-color: #c9d1d1;
+    height: 850px;
+    border: 0px solid gray;
+    background-image: linear-gradient(rgb(0, 128, 109),rgb(255, 225, 0));
 }
 
 input{
@@ -67,8 +78,8 @@ tex{
 }
 @media screen and (max-width: 768px) {
   #box {
-    top: 40%;
-    transform: translate(-50%, -40%);
+    top: 60%;
+    transform: translate(-50%, -50%);
     padding: 15px;
   }
  #textt {
@@ -83,6 +94,11 @@ tex{
     padding: 10px;
     width: 60%;
   }
-}
+  .heading {
+    font-size: 1.5rem;
+    margin-top: 100px;
+    
 
+}
+}
 
