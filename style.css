@@ -31,27 +31,12 @@ a{
 body{
     background-color:azure;
 }
+#navline{
+    border: 2ps solid;
+    height: 1px;
+    width: 20px;
+}
 
-/*@media only screen and (max-width: 800px) {
-    #ribion1 {
-        display: flex;
-        flex-wrap: wrap;}
-    #ribion2 {
-        display: flex;
-        flex-wrap: wrap;}
-    #ribion3 {
-        display: flex;
-        flex-wrap: wrap;}
-    #ribion4 {
-        display: flex;
-        flex-wrap: wrap;}
-    #ribion5 {
-        display: flex;
-        flex-wrap: wrap;}
-    #ribion6 {
-        display: flex;
-        flex-wrap: wrap;}
-}*/
 @media only screen and (max-width:776px) {
     .container{
         display: flex;
@@ -62,3 +47,4 @@ body{
     }
     
 }
+
