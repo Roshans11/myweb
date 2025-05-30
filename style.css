@@ -95,7 +95,7 @@ body {
     animation-iteration-count: infinite;
 }
 
-@media only screen and (min-width:756px) and (max-width:776px) {
+@media only screen and (min-width:656px) and (max-width:776px) {
     .container{
         display: flex;
         flex-direction: row-reverse;
@@ -113,7 +113,7 @@ body {
     height: fit-content;
     width: fit-content;
 }
-@media only screen and (max-width:756px) {
+@media only screen and (max-width:656px) {
     .container{
         display: flex;
         flex-direction: row-reverse;
