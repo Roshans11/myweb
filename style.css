@@ -44,17 +44,14 @@
 }
 
 .container{
-    background-color: skyblue;
     height: 80px;
     width: auto;
-    box-shadow: 5px 5px lightgrey;
+    box-shadow: 5px 5px rgb(52, 34, 34);
     display:flex;
     flex-direction: row-reverse;
     transform:translate(50px 50px);
-    animation-name: backgroundcolor;
-    animation-duration: 3s;
-    animation-delay: 2s;
-    animation-iteration-count: infinite;
+    
+    background-color: transparent;
 }
 a{
     text-decoration: none;
@@ -75,11 +72,13 @@ a{
     transform:translate(50px 50px);
     
 }
-body{
-    background-color:azure;
-    height: 850px;
-    border: 0px solid gray;
-    background-image: linear-gradient(rgb(0, 113, 128),rgb(0, 255, 153),rgb(255, 255, 255));
+body {
+    margin: 0;
+    padding: 0;
+    background: url("background1.jpg") no-repeat center center fixed;
+    background-size: cover;
+    font-family: sans-serif;
+    min-height: 100vh;
 }
 #ribion6,#loginicon{
     display: inline-block;
