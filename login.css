@@ -12,6 +12,7 @@
     top: 60%;
     left:50%;
     transform: translate(-60%, -50%); /* Center the box */
+    background-color: transparent;
 }
 .heading {
     font-size: 2rem; 
@@ -28,7 +29,7 @@
 body{
     height: 850px;
     border: 0px solid gray;
-    background-image: linear-gradient(rgb(0, 128, 109),rgb(255, 225, 0));
+    background-color: azure);
 }
 
 input{
