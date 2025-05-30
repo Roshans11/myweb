@@ -94,38 +94,39 @@ body {
     animation-delay: 0s;
     animation-iteration-count: infinite;
 }
-
-@media only screen and (min-width:656px) and (max-width:776px) {
-    .container{
-        display: flex;
-        flex-direction: row-reverse;
-        flex-wrap: wrap;
-        height: auto;
-        width: auto;
-    }
-    .ribion{
-        height: fit-content;
-        width: fit-content;
-    }
-    
-}
 .ribion{
     height: fit-content;
     width: fit-content;
 }
-@media only screen and (max-width:656px) {
-    .container{
-        display: flex;
-        flex-direction: row-reverse;
-        flex-wrap:wrap;
-        height:fit-content;
-        width: fit-content;
-    }
-    .ribion{
-        height: fit-content;
-        width: fit-content;
-    }
-    
+@media screen and (min-width: 643px) and (max-width: 683px) {
+  .container {
+    display: flex;
+    flex-direction:row-reverse;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: auto;
+    width: auto;
+  }
+
+  .ribion {
+  width: fit-content;
+  height: fit-content;
+  }
 }
 
+/* Mobile: below 643px */
+@media screen and (max-width: 642px) {
+  .container {
+    display: flex;
+    flex-direction:row-reverse;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: fit-content;
+    width: fit-content;
+  }
 
+  .ribion {
+    width: fit-content;
+    height: fit-content;
+  }
+}
