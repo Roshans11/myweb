@@ -142,6 +142,27 @@ body {
     height: 30px;
     }
 }
+@keyframes loginm {
+  0%   { width: 40vw; height: 5vh; }
+  25%  { width: 45vw; height: 5.5vh; }
+  50%  { width: 50vw; height: 6vh; }
+  75%  { width: 45vw; height: 5.5vh; }
+  100% { width: 40vw; height: 5vh; }
+}
+
+@keyframes registrationm {
+  0%   { width: 60vw; height: 5vh; }
+  25%  { width: 65vw; height: 5.5vh; }
+  50%  { width: 70vw; height: 6vh; }
+  75%  { width: 65vw; height: 5.5vh; }
+  100% { width: 60vw; height: 5vh; }
+}
+#ribion6, #loginicon,
+#ribion5, #regicon {
+  max-width: 70vw;
+  max-height: 10vh;
+}
+
 
 .container{
     height: 80px;
@@ -210,6 +231,20 @@ body {
     width: fit-content;
     height: fit-content;
   }
+  #ribion6,#loginicon{
+    display: inline-block;
+    animation-name:loginm;
+    animation-duration: 2s;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+}
+#ribion5,#regicon{
+    display: inline-block;
+    animation-name:registrationm;
+    animation-duration: 2s;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+}
 }
 
 @media only screen and (max-width:327px) {
@@ -225,4 +260,18 @@ body {
     height: fit-content;
     text-align: center;
   }
+  #ribion6,#loginicon{
+    display: inline-block;
+    animation-name:loginm;
+    animation-duration: 2s;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+}
+#ribion5,#regicon{
+    display: inline-block;
+    animation-name:registrationm;
+    animation-duration: 2s;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+}
 }
