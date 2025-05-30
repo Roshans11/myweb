@@ -1,3 +1,10 @@
+.heading {
+    font-size: 2rem;
+    font-weight: 300;
+    color: aqua;
+    text-align: center;
+    margin-bottom: 25px;
+}
 /* Universal Reset */
 * {
     box-sizing: border-box;
@@ -8,7 +15,7 @@
 body {
     margin: 0;
     padding: 0;
-    background: url("background2.jpg") no-repeat center center fixed;
+    background: url("background3.jpg") no-repeat center center fixed;
     background-size: cover;
     font-family: sans-serif;
     min-height: 100vh;
@@ -17,7 +24,9 @@ body {
     align-items: center;
     justify-content: center;
 }
-
+input::placeholder {
+  color: #04af2f;
+}
 /* Container Box */
 #box {
     background-color: rgba(255, 255, 255, 0.1); /* semi-transparent glass effect */
@@ -29,20 +38,13 @@ body {
     backdrop-filter: blur(10px);
 }
 
-/* Heading */
-.heading {
-    font-size: 2rem;
-    font-weight: 300;
-    color: #190825;
-    text-align: center;
-    margin-bottom: 20px;
-}
+
 
 /* Input Fields */
 input {
     background: transparent;
     border: none;
-    border-bottom: 2px solid #041b2c;
+    border-bottom: 2px solid #000f19;
     border-radius: 0;
     width: 100%;
     height: 40px;
@@ -51,9 +53,7 @@ input {
     color: white;
     font-size: 16px;
 }
-input::placeholder {
-  color: #04af2f;
-}
+
 input:focus {
     border-bottom: 2px solid rgb(1, 55, 1);
     outline: none;
@@ -80,19 +80,7 @@ a {
     margin: 10px 0;
 }
 
-/* Create New Account Button */
-#newAccount {
-    background-color: #42b72a;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    font-size: 16px;
-    border: none;
-    border-radius: 8px;
-    width: 100%;
-    padding: 12px;
-    margin-top: 15px;
-}
+
 
 /* Bottom Text */
 #textt {
@@ -124,10 +112,7 @@ a {
         font-size: 1.5rem;
     }
 
-    input[type="submit"],
-    #newAccount {
-        font-size: 18px;
-    }
+   
 
     #textt {
         font-size: 15px;
