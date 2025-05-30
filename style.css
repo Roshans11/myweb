@@ -98,35 +98,131 @@ body {
     height: fit-content;
     width: fit-content;
 }
-@media screen and (min-width: 643px) and (max-width: 683px) {
+@keyframes backgroundcolor {
+    from{
+
+       background-color: skyblue;
+    }
+    to{
+        background-color: rgb(240, 255, 243);
+    }
+}
+
+@keyframes login {
+    0%{ width:70px;
+    height: 30px;
+}
+    25%{width:80px;
+    height: 35px;
+}
+    50%{width:90px;
+    height: 40px;
+}
+    75%{width:80px;
+    height: 35px;
+}
+    100%{width:70px;
+    height: 30px;
+}
+}
+@keyframes registration {
+    0%{width:150px;
+    height: 30px;
+    }
+    25%{width:160px;
+    height: 35px;
+    }
+    50%{width:170px;
+    height: 40px;
+    }
+    75%{width:160px;
+    height: 35px;
+    }
+    100%{width:150px;
+    height: 30px;
+    }
+}
+
+.container{
+    height: 80px;
+    width: auto;
+    box-shadow: 5px 5px rgb(52, 34, 34);
+    display:flex;
+    flex-direction: row-reverse;
+    transform:translate(50px 50px);
+    
+    background-color: transparent;
+}
+a{
+    text-decoration: none;
+    
+}
+.ribion{
+    text-align: center;
+    margin: 20px;
+    padding: 5px;
+    border-radius: 20px;
+    box-shadow: 1px 1px gray;
+    
+
+}
+    
+.navigation:hover{
+    display:inline-block;
+    transform:translate(50px 50px);
+    
+}
+body {
+    margin: 0;
+    padding: 0;
+    background: url("background1.jpg") no-repeat center center fixed;
+    background-size: cover;
+    font-family: sans-serif;
+    min-height: 100vh;
+}
+#ribion6,#loginicon{
+    display: inline-block;
+    animation-name:login;
+    animation-duration: 2s;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+}
+#ribion5,#regicon{
+    display: inline-block;
+    animation-name:registration;
+    animation-duration: 2s;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+}
+.ribion{
+    height: fit-content;
+    width: fit-content;
+}
+@media only screen and (min-width:327px) and (max-width: 768px) {
   .container {
     display: flex;
-    flex-direction:row-reverse;
+    flex-direction: row-reverse;
     flex-wrap: wrap;
     justify-content: center;
-    height: auto;
-    width: auto;
   }
 
   .ribion {
-  width: fit-content;
-  height: fit-content;
+    width: fit-content;
+    height: fit-content;
   }
 }
 
-/* Mobile: below 643px */
-@media screen and (max-width: 642px) {
+@media only screen and (max-width:327px) {
   .container {
     display: flex;
-    flex-direction:row-reverse;
+    flex-direction: row-reverse;
+    align-items: center;
     flex-wrap: wrap;
-    justify-content: center;
-    height: fit-content;
-    width: fit-content;
   }
 
   .ribion {
     width: fit-content;
     height: fit-content;
+    text-align: center;
   }
 }
