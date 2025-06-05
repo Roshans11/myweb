@@ -1,3 +1,9 @@
+
+html, body {
+  height: 100%;
+}
+
+
 /* Reset & Base Styles */
 .logo {
   display: flex;
@@ -47,14 +53,7 @@
   transform: scale(1.2);
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: url("logo.png") center center / cover no-repeat;
-  background-attachment: scroll;
-  min-height: 100vh;
-}
+
 
 
 /* Navigation Bar Container */
@@ -145,8 +144,31 @@ body {
     margin-top: 10px;
   }
 }
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-image: url("logo.png"); /* For desktop */
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* Mobile background fix */
 @media (max-width: 768px) {
   body {
-    background: url("logomo.png") center center / cover no-repeat;
+    background-image: url("logomo.png"); /* Mobile optimized version */
+    background-attachment: scroll;
   }
 }
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5); /* adjust darkness */
+  z-index: -1;
+}
+
