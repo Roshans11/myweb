@@ -82,3 +82,36 @@ body {
     font-size: 0.9rem;
   }
 }
+.nav-icons {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 999;
+}
+
+.nav-icons a {
+  font-size: 1.8rem;
+  text-decoration: none;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 8px;
+  border-radius: 10px;
+  text-align: center;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.nav-icons a:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+  transform: scale(1.1);
+}
+
+/* Optional: adjust for smaller screens */
+@media screen and (max-width: 600px) {
+  .nav-icons a {
+    font-size: 1.5rem;
+    padding: 6px;
+  }
+}
