@@ -1,12 +1,61 @@
 /* Reset & Base Styles */
+.logo {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 30px;
+  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Logo Styling */
+.logo img {
+  height: 60px;
+}
+
+/* Right Side Navigation (Buttons + Icons) */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Use Existing Styles for .ribion, .login-btn, .register-btn */
+
+.nav-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.nav-icons a {
+  font-size: 1.3rem;
+  text-decoration: none;
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.nav-icons a:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.2);
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: url("background1.jpg") no-repeat center center fixed;
-  background-size: cover;
+  background: url("logo.png") center center / cover no-repeat;
+  background-attachment: scroll;
   min-height: 100vh;
 }
+
 
 /* Navigation Bar Container */
 .container {
@@ -94,5 +143,10 @@ body {
   .nav-icons {
     justify-content: center;
     margin-top: 10px;
+  }
+}
+@media (max-width: 768px) {
+  body {
+    background: url("logomo.png") center center / cover no-repeat;
   }
 }
