@@ -1,15 +1,43 @@
-
 html, body {
   height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  overflow-x: hidden; /* Prevent horizontal scrollbar */
 }
 
+/* Background */
+body {
+  background-image: url("logo.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
 
-/* Reset & Base Styles */
+/* Dark Overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: -1;
+}
+
+/* Logo Styling */
 .logo {
   display: flex;
   align-items: center;
   padding: 10px;
 }
+.logo img {
+  height: 60px;
+  max-width: 100%;
+}
+
+/* Navbar */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -17,54 +45,15 @@ html, body {
   padding: 12px 30px;
   background-color: rgba(0, 0, 0, 0.5);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  flex-wrap: wrap;
 }
 
-/* Logo Styling */
-.logo img {
-  height: 60px;
-}
-
-/* Right Side Navigation (Buttons + Icons) */
+/* Right Nav */
 .nav-right {
   display: flex;
   align-items: center;
   gap: 20px;
-}
-
-/* Use Existing Styles for .ribion, .login-btn, .register-btn */
-
-.nav-icons {
-  display: flex;
-  gap: 10px;
-}
-
-.nav-icons a {
-  font-size: 1.3rem;
-  text-decoration: none;
-  color: white;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 10px;
-  border-radius: 50%;
-  transition: all 0.3s ease;
-}
-
-.nav-icons a:hover {
-  background: rgba(255, 255, 255, 0.3);
-  transform: scale(1.2);
-}
-
-
-
-
-/* Navigation Bar Container */
-.container {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 20px 40px;
-  background-color: rgba(0, 0, 0, 0.5);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  gap: 20px;
+  flex-wrap: wrap;
 }
 
 /* Buttons */
@@ -78,28 +67,24 @@ html, body {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
-
 .login-btn {
   background: linear-gradient(to right, #ec38bc, #7303c0);
   animation: login 2s infinite;
 }
-
 .register-btn {
   background: linear-gradient(to right, #f7971e, #ffd200);
   animation: registration 2s infinite;
 }
-
 .ribion:hover {
   transform: scale(1.1);
 }
 
-/* Animated Icons Group */
+/* Icons */
 .nav-icons {
   display: flex;
   gap: 12px;
   margin-left: 30px;
 }
-
 .nav-icons a {
   font-size: 1.4rem;
   text-decoration: none;
@@ -109,66 +94,70 @@ html, body {
   border-radius: 50%;
   transition: all 0.3s ease;
 }
-
 .nav-icons a:hover {
   background: rgba(255,255,255,0.3);
   transform: scale(1.2);
 }
 
-/* Keyframes */
+/* Animated Button Keyframes */
 @keyframes login {
   0%, 100% { width: 90px; height: 40px; }
   50% { width: 100px; height: 45px; }
 }
-
 @keyframes registration {
   0%, 100% { width: 160px; height: 40px; }
   50% { width: 170px; height: 45px; }
 }
 
-/* Responsive Design */
+/* Container (if used elsewhere) */
+.container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Responsive Styles */
 @media (max-width: 768px) {
-  .container {
-    flex-wrap: wrap;
+  body {
+    background-image: url("logomo.png");
+    background-attachment: scroll;
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 15px;
+    text-align: center;
+  }
+
+  .logo {
     justify-content: center;
-    padding: 15px;
+    margin-bottom: 10px;
+  }
+
+  .nav-right {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
   }
 
   .ribion {
     font-size: 0.9rem;
     padding: 8px 18px;
+    width: 80%;
+    max-width: 300px;
   }
 
   .nav-icons {
     justify-content: center;
-    margin-top: 10px;
+    margin-left: 0;
+    flex-wrap: wrap;
+    gap: 10px;
   }
 }
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background-image: url("logo.png"); /* For desktop */
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  min-height: 100vh;
-}
-
-/* Mobile background fix */
-@media (max-width: 768px) {
-  body {
-    background-image: url("logomo.png"); /* Mobile optimized version */
-    background-attachment: scroll;
-  }
-}
-body::before {
-  content: "";
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.5); /* adjust darkness */
-  z-index: -1;
-}
-

@@ -1,26 +1,30 @@
 function expandBox(originalDiv) {
-    // Create overlay element
-    const fullscreenDiv = document.createElement('div');
-    fullscreenDiv.classList.add('fullscreen');
+  // Remove any existing modal
+  const existing = document.querySelector('.fullscreen');
+  if (existing) existing.remove();
 
-    // Copy the original div content
-    fullscreenDiv.innerHTML = originalDiv.innerHTML;
+  // Create overlay
+  const fullscreenDiv = document.createElement('div');
+  fullscreenDiv.className = 'fullscreen';
 
-    // Create close button
-    const closeBtn = document.createElement('button');
-    closeBtn.classList.add('close-btn');
-    closeBtn.textContent = 'Close';
+  // Create modal content
+  const contentDiv = document.createElement('div');
+  contentDiv.className = 'fullscreen-content';
+  contentDiv.innerHTML = `<h2>${originalDiv.textContent}</h2>`;
 
-    // Attach close logic
-    closeBtn.onclick = () => {
-      document.body.removeChild(fullscreenDiv);
-    };
+  // Add close button
+  const closeBtn = document.createElement('button');
+  closeBtn.className = 'close-btn';
+  closeBtn.innerText = 'Close';
+  closeBtn.onclick = () => {
+    document.body.removeChild(fullscreenDiv);
+    document.body.style.overflow = 'auto';
+  };
 
-    // Add the button inside the fullscreen box
-    fullscreenDiv.appendChild(closeBtn);
+  contentDiv.appendChild(closeBtn);
+  fullscreenDiv.appendChild(contentDiv);
+  document.body.appendChild(fullscreenDiv);
 
-    // Append to body
-    document.body.appendChild(fullscreenDiv);
-  }
-  document.body.style.overflow = 'hidden';  // when opened
-  document.body.style.overflow = 'auto';    // when closed
+  // Prevent background scroll
+  document.body.style.overflow = 'hidden';
+}
