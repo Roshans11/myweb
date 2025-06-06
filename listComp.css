@@ -84,12 +84,32 @@ html, body {
   background-repeat: no-repeat;
   background-image: url("sports_video.png");
 }
+#Video_editing{
+    background-size: contain;
+  background-position:50%;
+  background-repeat: no-repeat;
+  background-image: url("videoediting.png");
+}
+#Innovation{
+    background-size: contain;
+  background-position:50%;
+  background-repeat: no-repeat;
+  background-image: url("inovation.png");
+}
 #Coding{
     background-size: contain;
   background-position:50%;
   background-repeat: no-repeat;
   background-image: url("coding.png");
 }
+#Writing{
+    background-size: contain;
+  background-position:50%;
+  background-repeat: no-repeat;
+  background-image: url("writting.png");
+}
+w
+
 /* Fullscreen modal */
 .fullscreen {
   position: absolute;
