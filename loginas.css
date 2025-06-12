@@ -1,22 +1,24 @@
-@keyframes growShadow {
-  from {
-    box-shadow: 0 0 0 rgba(0, 0, 0, 0.3);
-  }
-  to {
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-  }
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap');
+
+:root {
+  --neon-yellow: #ffeb3b;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --dark-bg: #1c1c1e;
+  --neon-shadow: 0 0 15px rgba(255, 235, 59, 0.6);
+  --border-gradient: linear-gradient(145deg, #ffeb3b, #f44336);
 }
 
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(circle at center, #1f1f1f, #121212);
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  overflow: hidden;
 }
 
 /* Navigation Icons */
@@ -26,75 +28,91 @@ body {
   left: 15px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  z-index: 10;
+  gap: 14px;
+  z-index: 999;
 }
 
 .nav-icons a {
-  background: rgba(0, 0, 0, 0.07);
-  padding: 10px;
-  border-radius: 10px;
-  color: #333;
+  font-size: 1.6rem;
+  padding: 12px;
+  border-radius: 12px;
+  background: var(--glass-bg);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  color: #fff;
   text-align: center;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1rem;
+  box-shadow: 0 0 6px rgba(255,255,255,0.1);
   transition: all 0.3s ease;
 }
 
 .nav-icons a:hover {
-  background: rgba(0, 0, 0, 0.15);
-  transform: scale(1.1);
+  transform: scale(1.1) rotate(-4deg);
+  background: rgba(255, 255, 255, 0.15);
 }
 
-/* Login Option Boxes */
+/* Main view */
 .view {
   display: flex;
   flex-direction: column;
-  gap: 30px;
-  justify-content: center;
+  gap: 40px;
   align-items: center;
+  justify-content: center;
   width: 100%;
-  padding: 60px 20px;
+  padding: 50px 20px;
 }
 
 .login-box {
   width: 280px;
   height: 120px;
-  background: rgba(70, 69, 75, 0.85);
-  backdrop-filter: blur(6px);
-  color: white;
-  border-radius: 12px;
+  background: var(--glass-bg);
+  border-radius: 20px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  box-shadow: inset 0 0 0 1000px rgba(255, 255, 255, 0.02), 0 4px 24px rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: transform 0.3s ease, background 0.3s ease;
-  animation: growShadow 0.5s ease forwards;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  position: relative;
+  transition: all 0.35s ease-in-out;
+}
+
+.login-box::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  padding: 2px;
+  background: var(--border-gradient);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: destination-out;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .login-box:hover {
-  background: rgba(70, 69, 75, 0.95);
-  transform: translateY(-5px);
-  animation: growShadow 0.3s ease forwards;
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 0 25px rgba(255, 235, 59, 0.4);
 }
 
-/* Link inside the box */
 .login-link {
+  position: relative;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--neon-yellow);
   text-decoration: none;
-  color: #ffeb3b;
-  font-size: 1.2rem;
-  font-weight: bold;
   text-transform: uppercase;
-  transition: color 0.3s ease;
+  letter-spacing: 1px;
+  z-index: 1;
+  transition: all 0.3s ease-in-out;
 }
 
 .login-link:hover {
-  color: white;
+  color: #fff;
 }
 
-/* Responsive Design */
+/* Responsive */
 @media (max-width: 600px) {
   .login-box {
     width: 90%;
@@ -106,7 +124,25 @@ body {
   }
 
   .nav-icons a {
-    font-size: 0.85rem;
-    padding: 6px;
+    font-size: 1.3rem;
+    padding: 10px;
   }
 }
+
+.ripple {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: scale(0);
+    animation: rippleEffect 0.6s linear;
+  }
+
+  @keyframes rippleEffect {
+    to {
+      transform: scale(3.5);
+      opacity: 0;
+    }
+  }

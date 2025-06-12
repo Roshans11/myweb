@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Poetry Competition</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: #f4f4f8;
+      color: #333;
+    }
+
+    .nav-icons {
+      display: flex;
+      gap: 15px;
+      padding: 15px;
+      background: #1e1e2f;
+      justify-content: center;
+    }
+
+    .nav-icons button, .nav-icons a {
+      background: #fff;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      border-radius: 8px;
+      font-size: 16px;
+      text-decoration: none;
+    }
+
+    section {
+      padding: 20px;
+      display: none;
+    }
+
+    section.active {
+      display: block;
+    }
+
+    #poetry-form {
+      display: flex;
+      flex-direction: column;
+      max-width: 400px;
+      gap: 10px;
+    }
+
+    #poetry-form input, #poetry-form textarea {
+      padding: 10px;
+      border: 1px solid #aaa;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    #poetry-form button {
+      background: #2a9d8f;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #reels-container {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .reel {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .reel .name {
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .reel .text {
+      margin-bottom: 8px;
+    }
+
+    .like-button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    .liked {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Icons -->
+  <div class="nav-icons">
+    <button onclick="showUpload()">📜 Upload Poetry</button>
+    <button onclick="showReels()">📖 Read Poetry</button>
+    <a href="#">🏠 Home</a>
+  </div>
+
+  <!-- Upload Poetry Section -->
+  <section id="upload-section" class="active">
+    <h2>Upload Your Poetry</h2>
+    <form id="poetry-form">
+      <input type="text" id="author" placeholder="Your Name" required />
+      <textarea id="poetry" rows="4" placeholder="Write your poetry..." required></textarea>
+      <button type="submit">Upload</button>
+    </form>
+  </section>
+
+  <!-- Reels Section -->
+  <section id="reels-section">
+    <h2>Others' Poetry Reels</h2>
+    <div id="reels-container"></div>
+  </section>
+
+  <script>
+    const poetryForm = document.getElementById('poetry-form');
+    const reelsContainer = document.getElementById('reels-container');
+
+    poetryForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const author = document.getElementById('author').value.trim();
+      const poetry = document.getElementById('poetry').value.trim();
+
+      if (!author || !poetry) return;
+
+      addPoetryReel(author, poetry);
+      poetryForm.reset();
+      showReels();
+    });
+
+    function addPoetryReel(name, poem) {
+      const reel = document.createElement('div');
+      reel.classList.add('reel');
+
+      reel.innerHTML = `
+        <div class="name">${name}</div>
+        <div class="text">${poem}</div>
+        <button class="like-button" onclick="toggleLike(this)">❤️ Like</button>
+      `;
+
+      reelsContainer.prepend(reel);
+    }
+
+    function toggleLike(button) {
+      button.classList.toggle('liked');
+      button.textContent = button.classList.contains('liked') ? '❤️ Liked' : '❤️ Like';
+    }
+
+    function showUpload() {
+      document.getElementById('upload-section').classList.add('active');
+      document.getElementById('reels-section').classList.remove('active');
+    }
+
+    function showReels() {
+      document.getElementById('reels-section').classList.add('active');
+      document.getElementById('upload-section').classList.remove('active');
+    }
+  </script>
+</body>
+</html>

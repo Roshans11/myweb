@@ -161,3 +161,70 @@ body::before {
     gap: 10px;
   }
 }
+.important-links-box {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  width: 240px;
+  height: 200px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+  color: white;
+  z-index: 999;
+  padding: 15px;
+}
+
+.important-links-box::before {
+  content: "Important Links";
+  display: block;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #ffd700;
+  text-align: center;
+}
+
+.links-marquee {
+  height: 150px;
+  overflow: hidden;
+  position: relative;
+}
+
+.links-marquee ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  animation: scrollUp 10s linear infinite;
+}
+
+.links-marquee ul li {
+  margin: 10px 0;
+}
+
+.links-marquee ul li a {
+  color: #00f7ff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s;
+}
+
+.links-marquee ul li a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+@keyframes scrollUp {
+  0% { transform: translateY(100%); }
+  100% { transform: translateY(-100%); }
+}
+
+/* Responsive tweak */
+@media (max-width: 768px) {
+  .important-links-box {
+    width: 90%;
+    left: 5%;
+    bottom: 20px;
+  }
+}

@@ -1,0 +1,7 @@
+/* Common styles go here */
+body { background: #0f172a; color: white; font-family: sans-serif; padding: 20px; }
+.heading { color: aqua; text-align: center; font-size: 2rem; margin-bottom: 20px; }
+.nav-icons { position: fixed; top: 10px; left: 10px; display: flex; flex-direction: column; gap: 10px; }
+.nav-icons a { text-decoration: none; font-size: 1.5rem; background: rgba(255,255,255,0.2); padding: 8px; border-radius: 8px; color: white; transition: 0.3s; }
+.nav-icons a:hover { background: rgba(255,255,255,0.4); transform: scale(1.1); }
+.container { max-width: 800px; margin: 100px auto; padding: 20px; background: rgba(255,255,255,0.05); border-radius: 12px; box-shadow: 0 0 15px rgba(0,0,0,0.3); }
