@@ -1,22 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
   <title>Video Editing Competition</title>
-  <link rel="stylesheet" href="styles/common.css" />
+  <link rel="stylesheet" href="video-editing.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <div class="nav-icons">
-    <a href="index.html">🏠</a>
-    <a href="javascript:history.back()">🔙</a>
+  <div class="container">
+    <header>
+      <h1>🎞️ Video Editing Competition</h1>
+      <p>Upload your content and explore others' entries!</p>
+    </header>
+
+    <nav class="navigation">
+      <button onclick="scrollToSection('uploadSection')">
+        <i class="fas fa-upload"></i> Upload
+      </button>
+      <button onclick="scrollToSection('entriesSection')">
+        <i class="fas fa-folder-open"></i> Entries
+      </button>
+    </nav>
+
+    <!-- Upload Section -->
+    <section id="uploadSection" class="upload-section">
+      <h2>Upload Your Video</h2>
+      <input type="file" id="fileInput" accept="video/*">
+      <button onclick="uploadVideo()">Upload</button>
+      <p id="uploadStatus"></p>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="entriesSection" class="gallery-section">
+      <h2>Entries Gallery</h2>
+      <div id="gallery" class="gallery"></div>
+    </section>
   </div>
 
-  <div class="container">
-    <h1 class="heading">Video Editing Competition</h1>
-    <p class="description">
-      Welcome to the Video Editing Competition. Upload your content, see others' entries, and join the challenge!
-    </p>
-  </div>
+  <script src="video-editing.js"></script>
 </body>
 </html>

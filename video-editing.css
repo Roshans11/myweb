@@ -1,0 +1,96 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f5f6fa;
+  margin: 0;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+header {
+  background-color: #2d3436;
+  color: white;
+  padding: 30px;
+  text-align: center;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.navigation {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.navigation button {
+  background-color: #0984e3;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.upload-section,
+.gallery-section {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+}
+
+input[type="file"] {
+  margin-top: 10px;
+}
+
+button {
+  margin-top: 10px;
+  padding: 8px 15px;
+  background-color: #00cec9;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.video-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+.video-card video {
+  width: 100%;
+  border-radius: 6px;
+}
+
+.actions {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+}
+
+.actions i {
+  cursor: pointer;
+  color: #636e72;
+  transition: color 0.2s ease;
+}
+
+.actions i:hover {
+  color: #0984e3;
+}
