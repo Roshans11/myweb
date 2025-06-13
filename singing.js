@@ -22,6 +22,26 @@ const mockSongs = [
 let feed = JSON.parse(localStorage.getItem('songFeed')) || [...mockSongs];
 let sortByLikes = false;
 
+function getRandomPokemonPic() {
+  const randomId = Math.floor(Math.random() * 151) + 1;
+  return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${randomId}.png`;
+}
+
+function handleUpload(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const newSong = {
+    username: "@you",
+    title: file.name,
+    url: URL.createObjectURL(file),
+    likes: 0,
+    comments: [],
+    profilePic: getRandomPokemonPic()
+  };
+  feed.unshift(newSong);
+  saveFeed();
+  renderFeed();
+}
 
 function createHeader() {
   const header = document.createElement('header');
@@ -159,22 +179,6 @@ function createCard(song, index) {
   card.appendChild(commentSection);
 
   return card;
-}
-
-function handleUpload(e) {
-  const file = e.target.files[0];
-  if (!file) return;
-  const newSong = {
-    username: "@you",
-    title: file.name,
-    url: URL.createObjectURL(file),
-    likes: 0,
-    comments: [],
-    profilePic: "https://i.pravatar.cc/150?u=you"
-  };
-  feed.unshift(newSong);
-  saveFeed();
-  renderFeed();
 }
 
 function saveFeed() {
