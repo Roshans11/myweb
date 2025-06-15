@@ -2,169 +2,293 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Poetry Competition</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Poetry Reels App</title>
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
+    * {
       margin: 0;
-      background-color: #f4f4f8;
-      color: #333;
+      padding: 0;
+      box-sizing: border-box;
     }
-
-    .nav-icons {
+    body {
       display: flex;
-      gap: 15px;
-      padding: 15px;
-      background: #1e1e2f;
-      justify-content: center;
+      flex-direction: column;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9f9f9;
+      overflow: hidden;
     }
-
-    .nav-icons button, .nav-icons a {
-      background: #fff;
-      border: none;
-      padding: 10px 15px;
-      cursor: pointer;
-      border-radius: 8px;
-      font-size: 16px;
-      text-decoration: none;
+    .container {
+      display: flex;
+      flex: 1;
+      height: 100vh;
     }
-
-    section {
+    .sidebar {
+      width: 220px;
+      background: linear-gradient(to bottom right, #1e3c72, #2a5298);
       padding: 20px;
-      display: none;
-    }
-
-    section.active {
-      display: block;
-    }
-
-    #poetry-form {
+      box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
       display: flex;
       flex-direction: column;
-      max-width: 400px;
-      gap: 10px;
+      gap: 15px;
+      z-index: 2;
     }
-
-    #poetry-form input, #poetry-form textarea {
-      padding: 10px;
-      border: 1px solid #aaa;
-      border-radius: 6px;
+    .sidebar button {
+      padding: 12px 15px;
       font-size: 16px;
-    }
-
-    #poetry-form button {
-      background: #2a9d8f;
-      color: white;
       border: none;
-      padding: 10px;
-      border-radius: 6px;
-      font-size: 16px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border-radius: 8px;
       cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
     }
-
-    #reels-container {
+    .sidebar button:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: scale(1.05);
+    }
+    .main-content {
+      flex: 1;
+      position: relative;
+      height: 100vh;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+    }
+    .profile-pic {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      background-color: #ccc;
+      z-index: 2;
+    }
+    .reel {
+      scroll-snap-align: start;
+      height: 100vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+      background-color: white;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+      position: relative;
+    }
+    .reel h3 {
+      margin-bottom: 10px;
+      color: #007bff;
+    }
+    .reel p {
+      font-size: 20px;
+      text-align: center;
+      max-width: 600px;
+      line-height: 1.6;
+    }
+    .reel .actions {
+      position: absolute;
+      bottom: 30px;
+      right: 30px;
       display: flex;
       flex-direction: column;
       gap: 15px;
     }
-
-    .reel {
-      background: white;
-      padding: 15px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-
-    .reel .name {
-      font-weight: bold;
-      margin-bottom: 8px;
-    }
-
-    .reel .text {
-      margin-bottom: 8px;
-    }
-
-    .like-button {
+    .reel .actions button {
+      font-size: 20px;
       background: none;
       border: none;
       cursor: pointer;
-      font-size: 20px;
+      transition: 0.2s;
     }
-
-    .liked {
-      color: red;
+    .reel .actions button:hover {
+      transform: scale(1.2);
+    }
+    .like-count {
+      position: absolute;
+      bottom: 30px;
+      left: 30px;
+      font-size: 16px;
+      color: #333;
+    }
+    .create-button {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 14px 28px;
+      font-size: 18px;
+      border: none;
+      background-color: #28a745;
+      color: white;
+      border-radius: 30px;
+      cursor: pointer;
+      z-index: 2;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 5;
+      display: none;
+    }
+    .modal-content {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      position: relative;
+    }
+    .modal-content h2 {
+      margin-bottom: 20px;
+    }
+    .modal-content input,
+    .modal-content textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .modal-content button {
+      padding: 10px 20px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .close-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: transparent;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+      .sidebar {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 10px 0;
+      }
+      .main-content {
+        height: calc(100vh - 70px);
+      }
+      .profile-pic {
+        top: 10px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
+      }
+      .reel {
+        padding: 15px;
+      }
+      .reel p {
+        font-size: 16px;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Navigation Icons -->
-  <div class="nav-icons">
-    <button onclick="showUpload()">📜 Upload Poetry</button>
-    <button onclick="showReels()">📖 Read Poetry</button>
-    <a href="index.html">🏠 Home</a>
+  <div class="container">
+    <div class="sidebar">
+      <button onclick="goHome()">⌂ Home</button>
+      <button>Poetry</button>
+      <button>Notifications</button>
+      <button><strong>Profile</strong></button>
+      <button>⚙️ Settings</button>
+      <button>👤 Account</button>
+      <button>❓ Help</button>
+    </div>
+    <div class="main-content">
+      <div class="profile-pic"></div>
+      <div id="reels"></div>
+      <button class="create-button" onclick="openModal()">+ Create / Write</button>
+    </div>
   </div>
-
-  <!-- Upload Poetry Section -->
-  <section id="upload-section" class="active">
-    <h2>Upload Your Poetry</h2>
-    <form id="poetry-form">
-      <input type="text" id="author" placeholder="Your Name" required />
-      <textarea id="poetry" rows="4" placeholder="Write your poetry..." required></textarea>
-      <button type="submit">Upload</button>
-    </form>
-  </section>
-
-  <!-- Reels Section -->
-  <section id="reels-section">
-    <h2>Others' Poetry Reels</h2>
-    <div id="reels-container"></div>
-  </section>
-
+  <div class="modal" id="poemModal">
+    <div class="modal-content">
+      <button class="close-button" onclick="closeModal()">✖</button>
+      <h2>Create New Poem</h2>
+      <input type="text" id="poetName" placeholder="Your Name (e.g., @writer_name)" />
+      <input type="text" id="poemTitle" placeholder="Poem Title" />
+      <textarea id="poemText" rows="6" placeholder="Write your poem here..."></textarea>
+      <button onclick="submitPoem()">Submit</button>
+    </div>
+  </div>
   <script>
-    const poetryForm = document.getElementById('poetry-form');
-    const reelsContainer = document.getElementById('reels-container');
-
-    poetryForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      const author = document.getElementById('author').value.trim();
-      const poetry = document.getElementById('poetry').value.trim();
-
-      if (!author || !poetry) return;
-
-      addPoetryReel(author, poetry);
-      poetryForm.reset();
-      showReels();
-    });
-
-    function addPoetryReel(name, poem) {
-      const reel = document.createElement('div');
-      reel.classList.add('reel');
-
-      reel.innerHTML = `
-        <div class="name">${name}</div>
-        <div class="text">${poem}</div>
-        <button class="like-button" onclick="toggleLike(this)">❤️ Like</button>
-      `;
-
-      reelsContainer.prepend(reel);
+    const reelsContainer = document.getElementById('reels');
+    const poemModal = document.getElementById('poemModal');
+    const samplePoems = [
+      { name: "@poet_soul", title: "Golden Dawn", text: "The sun kisses the earth gently,\nAs shadows stretch and yawn.\nA new day is born quietly,\nWrapped in a golden dawn.", likes: 14 },
+      { name: "@dream_writer", title: "Whispers at Night", text: "Stars whisper midnight secrets\nTo hearts that choose to hear,\nCarried by wind in silence,\nWith dreams drawing near.", likes: 27 },
+      { name: "@inked_heart", title: "Rain's Song", text: "Rain speaks louder than words,\nOn windows and in thoughts,\nIt washes away the silence,\nAnd soothes our aching knots.", likes: 36 },
+    ];
+    function renderReels() {
+      reelsContainer.innerHTML = '';
+      samplePoems.forEach((poem, index) => {
+        const reel = document.createElement('div');
+        reel.className = 'reel';
+        reel.innerHTML = `
+          <h3>${poem.title}</h3>
+          <p><em>${poem.name}</em></p>
+          <p>${poem.text.replace(/\n/g, '<br>')}</p>
+          <div class="actions">
+            <button onclick="likePoem(${index})">♥</button>
+            <button>➤</button>
+            <button>💬</button>
+          </div>
+          <div class="like-count" id="likes-${index}">${poem.likes} likes</div>
+        `;
+        reelsContainer.appendChild(reel);
+      });
     }
-
-    function toggleLike(button) {
-      button.classList.toggle('liked');
-      button.textContent = button.classList.contains('liked') ? '❤️ Liked' : '❤️ Like';
+    function likePoem(index) {
+      samplePoems[index].likes++;
+      document.getElementById(`likes-${index}`).innerText = `${samplePoems[index].likes} likes`;
     }
-
-    function showUpload() {
-      document.getElementById('upload-section').classList.add('active');
-      document.getElementById('reels-section').classList.remove('active');
+    function openModal() {
+      poemModal.style.display = 'flex';
     }
-
-    function showReels() {
-      document.getElementById('reels-section').classList.add('active');
-      document.getElementById('upload-section').classList.remove('active');
+    function closeModal() {
+      poemModal.style.display = 'none';
     }
+    function submitPoem() {
+      const name = document.getElementById('poetName').value;
+      const title = document.getElementById('poemTitle').value;
+      const text = document.getElementById('poemText').value;
+      if (name && title && text) {
+        samplePoems.unshift({ name, title, text, likes: 0 });
+        renderReels();
+        closeModal();
+        document.getElementById('poetName').value = '';
+        document.getElementById('poemTitle').value = '';
+        document.getElementById('poemText').value = '';
+      } else {
+        alert('Please fill all the fields');
+      }
+    }
+    function goHome() {
+      alert("Going back to Home Page");
+    }
+    renderReels();
   </script>
 </body>
 </html>
