@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gameplay Competition Reels</title>
+  <title>Dance Competition Reels</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-   <style>
+ <style>
     * {
       margin: 0;
       padding: 0;
@@ -197,9 +197,13 @@
   </style>
 </head>
 <body>
+     <div class="nav-icons">
+  <a href="index.html" title="Go to Home">🏠</a>
+  <a href="javascript:history.back()" title="Go Back">🔙</a>
+</div>
   <div class="layout">
     <div class="sidebar">
-      <h2>GamePlayGram</h2>
+      <h2>gameplay</h2>
       <button onclick="showReels()">Reels</button>
       <button onclick="showUpload()">Upload</button>
       <button>Messages</button>
@@ -208,36 +212,25 @@
     </div>
 
     <div class="reels-container" id="reels-feed">
-      <div class="countdown" id="countdown-timer"></div>
-
       <!-- Static Example Reel -->
-      <div class="reel">
-        <video src="sample.mp4" autoplay muted loop playsinline></video>
-        <div class="video-actions">
-          <i class="fas fa-heart" title="Like"></i>
-          <i class="fas fa-comment" title="Comment"></i>
-          <i class="fas fa-share" title="Share"></i>
-          <i class="fas fa-info-circle" title="Description"></i>
-          <i class="fas fa-trash" title="Delete"></i>
-        </div>
-        <div class="description">This is a sample gameplay clip!</div>
-        <div class="comment-box">
-          <input type="text" placeholder="Write a comment..." onkeydown="addComment(event, this)" />
-        </div>
-      </div>
+     <div class="reel">
+  <video src="your-sample-video.mp4" autoplay muted loop playsinline></video>
+  <div class="video-actions">
+    <i class="fas fa-heart" title="Like"></i>
+    <i class="fas fa-comment" title="Comment"></i>
+    <i class="fas fa-share" title="Share"></i>
+    <i class="fas fa-trash" title="Delete"></i>
+  </div>
+  <div class="description">This is a dance performance!</div>
+  <div class="comment-box">
+    <input type="text" placeholder="Write a comment..." onkeydown="addComment(event, this)" />
+  </div>
+</div>
 
-      <div class="leaderboard">
-        <h3>Leaderboard</h3>
-        <ol>
-          <li>PlayerOne - 3200 pts</li>
-          <li>GamerX - 2950 pts</li>
-          <li>ShadowHunter - 2800 pts</li>
-        </ol>
-      </div>
     </div>
 
     <div class="upload-box" id="upload-section">
-      <label class="custom-upload" for="video-upload">Upload Gameplay</label>
+      <label class="custom-upload" for="video-upload">Upload Video</label>
       <input type="file" id="video-upload" accept="video/*" />
     </div>
   </div>
@@ -271,7 +264,7 @@
             <i class="fas fa-info-circle" title="Description"></i>
             <i class="fas fa-trash" title="Delete"></i>
           </div>
-          <div class="description">User uploaded gameplay!</div>
+          <div class="description">This is a game performance!</div>
           <div class="comment-box">
             <input type="text" placeholder="Write a comment..." onkeydown="addComment(event, this)" />
           </div>
@@ -287,28 +280,6 @@
         inputEl.value = '';
       }
     }
-
-    function startCountdown(durationInMinutes) {
-      const countdownEl = document.getElementById('countdown-timer');
-      let time = durationInMinutes * 60;
-
-      function updateCountdown() {
-        const minutes = Math.floor(time / 60);
-        const seconds = time % 60;
-        countdownEl.textContent = `⏳ Time Left: ${minutes}m ${seconds}s`;
-        if (time > 0) {
-          time--;
-        } else {
-          countdownEl.textContent = '⏰ Time is up!';
-          clearInterval(interval);
-        }
-      }
-
-      updateCountdown();
-      const interval = setInterval(updateCountdown, 1000);
-    }
-
-    startCountdown(10); // 10-minute timer
   </script>
 </body>
 </html>
