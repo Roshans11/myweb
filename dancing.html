@@ -2,21 +2,229 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dancing Competition</title>
-  <link rel="stylesheet" href="styles/common.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dance Competition Reels</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    html, body {
+      height: 100%;
+      background: #000;
+      overflow: hidden;
+    }
+    .layout {
+      display: flex;
+      height: 100vh;
+    }
+    .sidebar {
+      width: 250px;
+      background: #111;
+      color: white;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .sidebar h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .sidebar button {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 16px;
+      text-align: left;
+      padding: 10px;
+      cursor: pointer;
+    }
+    .sidebar button:hover {
+      background: #222;
+      border-radius: 8px;
+    }
+    .reels-container {
+      flex: 1;
+      scroll-snap-type: y mandatory;
+      overflow-y: scroll;
+      scroll-behavior: smooth;
+      background: #000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .reel {
+      height: 100vh;
+      width: 100%;
+      max-width: 400px;
+      position: relative;
+      scroll-snap-align: start;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      background: #000;
+    }
+    .reel video {
+      height: 100%;
+      width: 100%;
+      max-height: 90vh;
+      max-width: 100%;
+      object-fit: contain;
+      border-radius: 12px;
+    }
+    .video-actions {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      font-size: 1.8em;
+      color: white;
+      z-index: 10;
+    }
+    .video-actions i {
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .video-actions i:hover {
+      color: #ff4081;
+    }
+    .description {
+      position: absolute;
+      bottom: 80px;
+      left: 20px;
+      color: white;
+      font-size: 14px;
+      background: rgba(0,0,0,0.6);
+      padding: 6px 12px;
+      border-radius: 8px;
+    }
+    .comment-box {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      padding: 0 20px;
+    }
+    .comment-box input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 25px;
+      border: none;
+      outline: none;
+      background: rgba(255,255,255,0.1);
+      color: white;
+    }
+    .upload-box {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 999;
+      background: #1e1e1e;
+      border-radius: 20px;
+      padding: 10px 20px;
+      display: none;
+    }
+    .upload-box input[type="file"] {
+      display: none;
+    }
+    .custom-upload {
+      padding: 8px 16px;
+      background: #ff4081;
+      border-radius: 30px;
+      cursor: pointer;
+      display: inline-block;
+      color: white;
+    }
+  </style>
 </head>
 <body>
-  <div class="nav-icons">
-    <a href="index.html">🏠</a>
-    <a href="javascript:history.back()">🔙</a>
+  <div class="layout">
+    <div class="sidebar">
+      <h2>DanceGram</h2>
+      <button onclick="showReels()">Reels</button>
+      <button onclick="showUpload()">Upload</button>
+      <button>Messages</button>
+      <button>Notifications</button>
+      <button>Profile</button>
+    </div>
+
+    <div class="reels-container" id="reels-feed">
+      <!-- Static Example Reel -->
+     <div class="reel">
+  <video src="your-sample-video.mp4" autoplay muted loop playsinline></video>
+  <div class="video-actions">
+    <i class="fas fa-heart" title="Like"></i>
+    <i class="fas fa-comment" title="Comment"></i>
+    <i class="fas fa-share" title="Share"></i>
+    <i class="fas fa-trash" title="Delete"></i>
+  </div>
+  <div class="description">This is a dance performance!</div>
+  <div class="comment-box">
+    <input type="text" placeholder="Write a comment..." onkeydown="addComment(event, this)" />
+  </div>
+</div>
+
+    </div>
+
+    <div class="upload-box" id="upload-section">
+      <label class="custom-upload" for="video-upload">Upload Video</label>
+      <input type="file" id="video-upload" accept="video/*" />
+    </div>
   </div>
 
-  <div class="container">
-    <h1 class="heading">Dancing Competition</h1>
-    <p class="description">
-      Welcome to the Dancing Competition. Upload your content, see others' entries, and join the challenge!
-    </p>
-  </div>
+  <script>
+    const uploadInput = document.getElementById('video-upload');
+    const uploadBox = document.getElementById('upload-section');
+    const reelsFeed = document.getElementById('reels-feed');
+
+    function showUpload() {
+      uploadBox.style.display = 'block';
+    }
+
+    function showReels() {
+      uploadBox.style.display = 'none';
+    }
+
+    uploadInput.addEventListener('change', (event) => {
+      const file = event.target.files[0];
+      if (file) {
+        const videoURL = URL.createObjectURL(file);
+
+        const reel = document.createElement('div');
+        reel.className = 'reel';
+        reel.innerHTML = `
+          <video src="${videoURL}" autoplay muted loop playsinline></video>
+          <div class="video-actions">
+            <i class="fas fa-heart" title="Like"></i>
+            <i class="fas fa-comment" title="Comment"></i>
+            <i class="fas fa-share" title="Share"></i>
+            <i class="fas fa-info-circle" title="Description"></i>
+            <i class="fas fa-trash" title="Delete"></i>
+          </div>
+          <div class="description">This is a dance performance!</div>
+          <div class="comment-box">
+            <input type="text" placeholder="Write a comment..." onkeydown="addComment(event, this)" />
+          </div>
+        `;
+        reelsFeed.appendChild(reel);
+        uploadBox.style.display = 'none';
+      }
+    });
+
+    function addComment(event, inputEl) {
+      if (event.key === 'Enter' && inputEl.value.trim() !== '') {
+        alert('Comment added: ' + inputEl.value);
+        inputEl.value = '';
+      }
+    }
+  </script>
 </body>
 </html>
