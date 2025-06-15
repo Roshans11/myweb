@@ -143,9 +143,39 @@
       display: inline-block;
       color: white;
     }
+    .nav-icons {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 999;
+}
+
+.nav-icons a {
+    font-size: 1.8rem;
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 10px;
+    border-radius: 12px;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: 0.3s ease;
+}
+
+.nav-icons a:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.15);
+}
   </style>
 </head>
 <body>
+     <div class="nav-icons">
+  <a href="index.html" title="Go to Home">🏠</a>
+  <a href="javascript:history.back()" title="Go Back">🔙</a>
+</div>
   <div class="layout">
     <div class="sidebar">
       <h2>DanceGram</h2>
