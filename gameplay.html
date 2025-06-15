@@ -6,7 +6,7 @@
   <title>Gameplay Competition Reels</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-  <style>
+   <style>
     * {
       margin: 0;
       padding: 0;
@@ -16,10 +16,10 @@
     html, body {
       height: 100%;
       background: #000;
-      overflow: hidden;
     }
     .layout {
       display: flex;
+      flex-direction: row;
       height: 100vh;
     }
     .sidebar {
@@ -171,6 +171,28 @@
     }
     .leaderboard ol {
       padding-left: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .layout {
+        flex-direction: column;
+      }
+      .sidebar {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding: 10px;
+      }
+      .sidebar h2 {
+        display: none;
+      }
+      .countdown, .leaderboard {
+        left: 10px;
+        right: 10px;
+        max-width: none;
+        width: calc(100% - 20px);
+      }
     }
   </style>
 </head>
