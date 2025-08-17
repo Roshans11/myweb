@@ -46,14 +46,7 @@
       background: rgba(255, 255, 255, 0.3);
       transform: scale(1.05);
     }
-    .main-content {
-      flex: 1;
-      position: relative;
-      height: 100vh;
-      overflow-y: scroll;
-      scroll-snap-type: y mandatory;
-    }
-    .profile-pic {
+     .profile-pic {
       position: fixed;
       top: 20px;
       right: 20px;
@@ -63,19 +56,45 @@
       background-color: #ccc;
       z-index: 2;
     }
-    .reel {
-      scroll-snap-align: start;
-      height: 100vh;
-      width: 50%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 30px;
-      background-color: white;
-      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
-      position: relative;
-    }
+   .main-content {
+  flex: 2;
+  position: relative;
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+
+  display: flex;
+  justify-content: center; /* horizontally center */
+}
+
+#reels {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* keep reels centered */
+  width: 100%;
+}
+
+.reel {
+  scroll-snap-align: start;
+
+  height: 100vh;                  /* exactly viewport height */
+  aspect-ratio: 9 / 16;           /* Instagram ratio */
+  max-width: calc(100vh * 9 / 16);
+  width: calc(100vh * 9 / 16);    /* force proper width */
+  
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+  margin: 0 auto;                 /* center horizontally */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  border-radius: 12px;
+}
+
+
     .reel h3 {
       margin-bottom: 10px;
       color: #007bff;
@@ -112,20 +131,21 @@
       color: #333;
     }
     .create-button {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      padding: 14px 28px;
-      font-size: 18px;
-      border: none;
-      background-color: #28a745;
-      color: white;
-      border-radius: 30px;
-      cursor: pointer;
-      z-index: 2;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    }
+  position: fixed;  
+  bottom: 10vh;        /* remove fixed positioning */
+  transform: none;
+  margin-left: -100vh;
+  margin-right: 0;
+  padding: 14px 28px;
+  font-size: 18px;
+  border: none;
+  background-color: #28a745;
+  color: white;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  align-self: center;
+}
     .modal {
       position: fixed;
       top: 0;
